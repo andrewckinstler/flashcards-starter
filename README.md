@@ -26,7 +26,7 @@ Node server running on port 3000
 
 ## Screenshots 
 
-![fc1](https://imgur.com/pVGpzzv)
+[Imgur](https://imgur.com/pVGpzzv)
 ![fc2](https://imgur.com/gZ6D0le)
 ![fc3](https://imgur.com/QNcmiOn)
 ![fc4](https://imgur.com/ErG8wUV)
