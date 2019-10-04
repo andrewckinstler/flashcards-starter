@@ -4,6 +4,7 @@ var expect = chai.expect;
 var Deck = require('../src/Deck.js');
 var Card = require('../src/Card.js');
 var Round = require('../src/round.js')
+var Turns = require('../src/turns.js')
 
 
 describe('Round', function() {
@@ -33,15 +34,51 @@ describe('Round', function() {
       "question": "What type of prototype method directly modifies the existing array?",
       "answers": ["mutator method", "accessor method", "iteration method"],
       "correctAnswer": "mutator method"
-    })
+    });
     deck = new Deck([card1, card2, card3]);
     round = new Round(deck);
   });
 
   it('should return the current card', function() {
-    expect(round.returnCurrentCard()).to.equal(card1)
+    expect(round.returnCurrentCard()).to.equal(card1);
   })
 
+  it('should take a turn', function() {
+    expect(round.turns).to.equal(0);
+
+    expect(round.returnCurrentCard()).to.equal(card1);
+
+    round.takeTurn('object');
+
+    expect(round.turns).to.equal(1);
+
+    expect(round.returnCurrentCard()).to.equal(card2);
+
+    expect(round.incorrectGuesses).to.deep.equal([]);
+
+  })
+
+  it('should be able to take a turn with incorrect answer', function() {
+    expect(round.turns).to.equal(0);
+
+    expect(round.returnCurrentCard()).to.equal(card1);
+
+    round.takeTurn('goblet');
+
+    expect(round.turns).to.equal(1);
+
+    expect(round.returnCurrentCard()).to.equal(card2);
+
+    expect(round.incorrectGuesses).to.deep.equal([1]);
+  });
+
+  it('should be able to calculate percent', function() {
+    round.takeTurn('object');
+    round.takeTurn('array');
+    round.takeTurn('mutator method');
+
+    expect(round.calculatePercent()).to.equal(100)
+  })
 
 
 })
