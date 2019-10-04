@@ -1,10 +1,8 @@
 var chai = require('chai');
-var assert = require('chai').assert;
 var expect = chai.expect;
 var Deck = require('../src/Deck.js');
 var Card = require('../src/Card.js');
 var Round = require('../src/round.js')
-var Turns = require('../src/turns.js')
 
 
 describe('Round', function() {
